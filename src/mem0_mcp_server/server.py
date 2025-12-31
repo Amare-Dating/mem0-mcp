@@ -262,8 +262,8 @@ def create_server() -> FastMCP:
             Optional[Dict[str, Any]],
             Field(default=None, description="Additional filter clauses (user_id injected automatically)."),
         ] = None,
-        limit: Annotated[
-            Optional[int], Field(default=None, description="Maximum number of results to return.")
+        top_k: Annotated[
+            Optional[int], Field(default=None, description="Number of top results to return (default: 10).")
         ] = None,
         enable_graph: Annotated[
             Optional[bool],
@@ -280,7 +280,7 @@ def create_server() -> FastMCP:
         args = SearchMemoriesArgs(
             query=query,
             filters=filters,
-            limit=limit,
+            top_k=top_k,
             enable_graph=_default_enable_graph(enable_graph, graph_default),
         )
         payload = args.model_dump(exclude_none=True)
