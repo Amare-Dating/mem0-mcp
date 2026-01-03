@@ -52,7 +52,7 @@ class SearchMemoriesArgs(BaseModel):
     filters: Optional[Dict[str, Any]] = Field(
         None, description="Additional filter clauses; user_id is injected automatically."
     )
-    limit: Optional[int] = Field(None, description="Optional maximum number of matches.")
+    top_k: Optional[int] = Field(None, description="The number of top results to return (default: 10).")
     enable_graph: Optional[bool] = Field(
         None, description="Set True only when the user asks for graph knowledge."
     )
