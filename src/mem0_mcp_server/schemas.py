@@ -37,6 +37,7 @@ class AddMemoryArgs(BaseModel):
         ),
     )
     user_id: Optional[str] = Field(None, description="Override for the Mem0 user ID.")
+    timestamp: Optional[int] = Field(None, description="Optional timestamp of the memory, in Unix format.")
     agent_id: Optional[str] = Field(None, description="Optional agent identifier.")
     app_id: Optional[str] = Field(None, description="Optional app identifier.")
     run_id: Optional[str] = Field(None, description="Optional run identifier.")
