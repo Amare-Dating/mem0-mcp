@@ -187,6 +187,10 @@ def create_server() -> FastMCP:
             Optional[str],
             Field(default=None, description="Override the default user scope for this write."),
         ] = None,
+        timestamp: Annotated[
+            Optional[int],
+            Field(default=None, description="Optional memory timestamp."),
+        ] = None,
         agent_id: Annotated[
             Optional[str], Field(default=None, description="Optional agent identifier.")
         ] = None,
@@ -216,6 +220,7 @@ def create_server() -> FastMCP:
             text=text,
             messages=[ToolMessage(**msg) for msg in messages] if messages else None,
             user_id=user_id if user_id else (default_user if not (agent_id or run_id) else None),
+            timestamp=timestamp,
             agent_id=agent_id,
             app_id=app_id,
             run_id=run_id,
